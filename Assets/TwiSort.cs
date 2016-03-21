@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TwiSort : MonoBehaviour {
@@ -7,16 +8,29 @@ public class TwiSort : MonoBehaviour {
    public enum Belt { NotFound, TopBlack , TopYellow, TopWhite, MiddleYellow, BottomRed, MiddleWhite, TopGreen, MiddleRed, TopRed, Orange,
         BottomYellow, TopBlue, MiddleBlack }
 
+
+    public int zip;//zip code to sort
+    public Text textbox;//textbox to display info
+    public int low;//low range for zip
+    public int high;//high range for zip
+
 	// Use this for initialization
 	void Start () {
-
-        UnityEngine.Random.seed = (int)Time.time;//seed Random
+        Debug.Log("Start");
+        UnityEngine.Random.seed = (int)Time.time * (int)Time.frameCount;//seed Random
+        Debug.Log(Time.time);
+        Debug.Log(Time.frameCount);
+        Debug.Log(UnityEngine.Random.seed);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        Debug.Log("Update");
+        UnityEngine.Random.seed = (int)Time.time * (int)Time.frameCount;//seed Random
+        Debug.Log(Time.time);
+        Debug.Log(Time.frameCount);
+        Debug.Log(UnityEngine.Random.seed);
+    }
 
     public Belt sort(int zip)
     {
@@ -111,7 +125,25 @@ public class TwiSort : MonoBehaviour {
 
     public void randomZipHandler()
     {
-        int rand = randomZip();
-        Debug.Log(rand);
+        int rand = randomZip(low, high);
+        textbox.GetComponent<Text>().text = "Zip Code: " + rand;
+        zip = rand;
     }
+
+    public void guess(string theGuess)
+    {
+        
+        
+        Belt answer = sort(zip);
+        if(answer == (Belt)Belt.Parse(typeof(Belt),theGuess))//correct guess
+        {
+            textbox.GetComponent<Text>().text = "Correct! " + answer.ToString();
+        }
+        else
+        {
+            textbox.GetComponent<Text>().text = "Wrong! Correct Belt was " + answer.ToString();
+        }
+
+    }
+
 }
