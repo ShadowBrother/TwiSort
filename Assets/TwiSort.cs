@@ -96,6 +96,6 @@ public class TwiSort : MonoBehaviour {
     {
         float averageCorrect = (float)numCorrect / (float)numTries * 100;
         float averageTime = timeTotal / numTries;
-        accuracyDisplay.GetComponent<Text>().text = string.Format("Sorting Accuracy: {0}%\n Average time to sort: {1} seconds",averageCorrect, averageTime);
+        accuracyDisplay.GetComponent<Text>().text = string.Format("Sorting Accuracy: {0}/{1}:  {2}%\n Average time to sort: {3} seconds",numCorrect, numTries, averageCorrect, averageTime);
     }
 }
