@@ -255,7 +255,7 @@ public class Package
     {
 
         //TopBlack - PD1
-        if (zip == 43 || zip == 44 || zip == 46 || zip == 47 || zip == 49 || (zip >= 100 && zip <= 102) || (zip >= 320 && zip <= 349))
+        if (zip == 44 || zip == 46 || zip == 47 || zip == 49 || (zip >= 100 && zip <= 102) || (zip >= 320 && zip <= 349))
         {
             return Belt.TopBlack;
         }//TopYellow
@@ -272,7 +272,7 @@ public class Package
         {
             return Belt.MiddleYellow;
         }//BottomRed
-        else if ((zip >= 39 && zip <= 42) || zip == 45 || zip == 48 || (zip >= 570 && zip <= 599) || (zip >= 630 && zip <= 639) ||
+        else if ((zip >= 39 && zip <= 43) || zip == 45 || zip == 48 || (zip >= 570 && zip <= 599) || (zip >= 630 && zip <= 639) ||
             (zip >= 650 && zip <= 659) || (zip >= 832 && zip <= 839) || (zip >= 870 && zip <= 889) || (zip >= 936 && zip <= 966) ||
             (zip >= 970 && zip <= 994))
         {
