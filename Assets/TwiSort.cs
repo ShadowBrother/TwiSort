@@ -22,7 +22,7 @@ public class TwiSort : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Debug.Log("Start");
-        UnityEngine.Random.seed = (int)Time.time * (int)Time.frameCount;//seed Random
+        UnityEngine.Random.InitState( (int)Time.time * (int)Time.frameCount);//seed Random
         //Debug.Log(Time.time);
         //Debug.Log(Time.frameCount);
         //Debug.Log(UnityEngine.Random.seed);
@@ -31,10 +31,10 @@ public class TwiSort : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Debug.Log("Update");
-        UnityEngine.Random.seed = (int)Time.time * (int)Time.frameCount;//seed Random
+        UnityEngine.Random.InitState((int)Time.time * (int)Time.frameCount);//seed Random
         Debug.Log(Time.time);
         Debug.Log(Time.frameCount);
-        Debug.Log(UnityEngine.Random.seed);
+        Debug.Log(UnityEngine.Random.state);
     }
 
     

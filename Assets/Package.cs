@@ -4,7 +4,7 @@
 public enum Belt
 {
     NotFound, TopBlack, TopYellow, TopWhite, MiddleYellow, BottomRed, MiddleWhite, TopGreen, MiddleRed, TopRed, Orange,
-    BottomYellow, TopBlue, MiddleBlack
+    BottomYellow, TopBlue, MiddleBlue, MiddleBlack, MiddleGreen, BottomGreen
 }
 
 //enumeration for State abbreviations
