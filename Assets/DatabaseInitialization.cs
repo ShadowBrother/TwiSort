@@ -8,8 +8,8 @@ using Mono.Data.Sqlite;
 
 public class DatabaseInitialization : MonoBehaviour {
 
-    private IDbConnection dbcon;
-    private IDbCommand dbcmd;
+    //private IDbConnection dbcon;
+    //private IDbCommand dbcmd;
 
     private SqliteConnection sqlcon;
     private SqliteCommand sqlcmd;
@@ -20,21 +20,21 @@ public class DatabaseInitialization : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //set up connection to database
-        string con = "URI=file:" + Application.dataPath + "/Databases/TwiSort";//path to db
-        //dbcon = (IDbConnection)new SqliteConnection(con);
-        //dbcon.Open();
-        //dbcmd = dbcon.CreateCommand();
-        Debug.Log(con);
-        sqlcon = new SqliteConnection(con);
-        sqlcon.Open();
-        sqlcmd = sqlcon.CreateCommand();
+        
+     
 
 	}
 
     //dbTest tests reading/writing to a db
    public void dbTest()
     {
+
+        //set up connection to database
+        string con = "URI=file:" + Application.dataPath + "/Databases/TwiSort";//path to db
+        Debug.Log(con);
+        sqlcon = new SqliteConnection(con);
+        sqlcon.Open();
+        sqlcmd = sqlcon.CreateCommand();
 
         string sqlQuery = "SELECT HR, sort From [2Day]";
         string sqlInsert = "INSERT INTO [2Day](HR, sort) VALUES(270, 'BottomGreen')";
@@ -71,6 +71,30 @@ public class DatabaseInitialization : MonoBehaviour {
         reader.Close();
     }
 	
+
+    public void twiInit()
+    {
+        //initialize twi database
+        string con = "URI=file:" + Application.dataPath + "/Databases/TwiSort";//path to db
+        
+        sqlcon = new SqliteConnection(con);
+        sqlcon.Open();
+        sqlcmd = sqlcon.CreateCommand();
+
+        //delete and repopulate tables
+        sqlcmd.CommandText =
+            "DELETE FROM FullZipExceptions; ";
+        sqlcmd.ExecuteNonQuery();
+
+
+
+        sqlcmd.Dispose();
+        sqlcmd = null;
+        sqlcon.Close();
+        sqlcon = null;
+
+    }
+
 	// Update is called once per frame
 	void Update () {
 		
