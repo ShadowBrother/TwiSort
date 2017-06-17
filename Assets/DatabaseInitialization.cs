@@ -71,23 +71,61 @@ public class DatabaseInitialization : MonoBehaviour {
         reader.Close();
     }
 	
+    void clearTable(SqliteCommand sqlcmd, string tableName)
+    {
+        sqlcmd.CommandText = "DELETE FROM " + tableName;
+        sqlcmd.ExecuteNonQuery();
+    }
 
     public void twiInit()
     {
         //initialize twi database
         string con = "URI=file:" + Application.dataPath + "/Databases/TwiSort";//path to db
         
+
         sqlcon = new SqliteConnection(con);
         sqlcon.Open();
         sqlcmd = sqlcon.CreateCommand();
 
-        //delete and repopulate tables
-        sqlcmd.CommandText =
-            "DELETE FROM FullZipExceptions; ";
-        sqlcmd.ExecuteNonQuery();
+        //clear and repopulate tables
+        //sqlcmd.CommandText =
+        //  "DELETE FROM FullZipExceptions; ";
+        //sqlcmd.ExecuteNonQuery();
+
+        //clear FullZipExceptions table
+        clearTable(sqlcmd, "FullZipExceptions");
+
+        //repopulate
+
+        //clear 4DigitExceptions
+        //sqlcmd.CommandText = deleteTable + "[4DigitExceptions]";
+        //sqlcmd.ExecuteNonQuery();
+
+        clearTable(sqlcmd, "[4DigitExceptions]");
 
 
+        //repopulate
 
+        //clear HR table
+        clearTable(sqlcmd, "HR");
+
+        //repopulate
+
+
+        //clear 3Day table
+        clearTable(sqlcmd, "[3Day]");
+
+        //repopulate
+
+        //clear 2Day table
+        clearTable(sqlcmd, "[2Day]");
+
+        //repopulate
+
+        //clear NextDay table
+        clearTable(sqlcmd, "NextDay");
+
+        //repopulate
         sqlcmd.Dispose();
         sqlcmd = null;
         sqlcon.Close();
